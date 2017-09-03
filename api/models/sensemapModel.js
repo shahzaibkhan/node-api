@@ -4,25 +4,29 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+/* Session Tab Object */
 var sessionSchema = new Schema({
-  tabID: { type: Number },
-  url: { type: String }
+  tabID:        { type: Number },
+  url:          { type: String },
+  title:        { type: String },
+  favIconUrl:   { type: String },
+  status:        { type: String },
 });
 
+/* Session Users Object */
 var sensemapSchema = new Schema({
-  fullName: {
-    type: String,
-    Required: 'Enter the full name of the user'
-  },
-  emailAddress: {
-    type: String,
-    Required: 'Enter the email address of the user'
-  },
-  createdOn: {
-    type: Date,
-    default: Date.now
-  },
+	
+  displayName:  { type: String},
+  name:         { type: String},
+  tagline:      { type: String},
+  aboutMe:      { type: String},
+  emailAddress: { type: String},
+  gender:       { type: String},
+  occupation:   { type: String},
+  pictureUrl:   { type: String},
+  createdOn:    { type: Date, default: Date.now },
   activeSession: [sessionSchema]
+  
 });
 
 module.exports = mongoose.model('SenseMap', sensemapSchema);
